@@ -1,0 +1,19 @@
+{
+	"name": "platform",
+	"type": "Module",
+	"active": true,
+	"description": "incms platform module",
+	"providers": [
+		"inCMS\\Platform\\Providers\\AppServiceProvider",
+        "inCMS\\Platform\\Providers\\AuthServiceProvider",
+        "inCMS\\Platform\\Providers\\EventServiceProvider",
+        "inCMS\\Platform\\Providers\\RouteServiceProvider"
+	],
+	"aliases": {},
+	"author": [
+		{
+			"name": "sudarmono",
+			"email": "mono.socialmedia@gmail.com"
+		}
+	]
+}

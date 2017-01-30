@@ -1,0 +1,55 @@
+{
+    "name": "incms/incms",
+    "description": "The inCMS Platform.",
+    "keywords": ["platform", "incms", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.6.4",
+        "wikimedia/composer-merge-plugin": "^1.3"
+    },
+    "extra": {
+        "merge-plugin": {
+            "include": [],
+            "require": [
+                "modules/*/composer.json"
+            ],
+            "recurse": true,
+            "replace": false,
+            "merge-dev": false,
+            "merge-extra": false,
+            "merge-extra-deep": false
+        }
+    },
+    "autoload": {
+        "files": [
+            "modules/helpers.php"
+        ],
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "inCMS\\Platform\\": "modules/platform/src"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "@php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
