@@ -34,6 +34,7 @@
     },
     "scripts": {
         "post-root-package-install": [
+            "@php -r \"file_exists('modules/platform') || symlink(getcwd().'/modules/.repos/platform', getcwd().'/modules/platform');\"",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
